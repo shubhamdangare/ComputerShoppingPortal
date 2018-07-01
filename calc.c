@@ -10,7 +10,7 @@ JNIEXPORT jint JNICALL Java_App_calcBill(JNIEnv *env, jclass jobj, jintArray arr
     void *p = NULL;
     int (*countTotal)(int [],int) = NULL;
 
-
+	jint *params = NULL;
     jint *params = (*env)->GetIntArrayElements(env,arr,0);
     p = dlopen("/home/shubham/Desktop/ComputerShoppingPortail/calcLogic.so",RTLD_LAZY);
     if(!p){
