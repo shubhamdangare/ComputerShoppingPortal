@@ -91,8 +91,8 @@ class AppFrame extends JFrame{
                     params[1] = ramPrice;
                     params[2] = graphicsCardsPrice;
 
-                   // int result = App.calcBill(params);
-                   // resultLabel2.setText("" + result);
+                    int result = App.calcBill(params);
+                    resultLabel2.setText("" + result);
                 }
         });
 
