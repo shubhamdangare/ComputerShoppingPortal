@@ -25,6 +25,7 @@ class AppFrame extends JFrame{
     private Hashtable<String,Integer> processors;
     private Hashtable<String,Integer> ram;
     private Hashtable<String,Integer> graphicsCards;
+	  private Hashtable<String,Integer> monitor;
     JLabel resultLabel2;
 
     public AppFrame(){
@@ -32,7 +33,27 @@ class AppFrame extends JFrame{
         setTitle("Marvellous Computer Shopping Portal");
         setSize(DEFAULT_WIDTH,DEFAULT_HEIGHT);
         setLayout(new GridLayout(5,2));
+		
 
+				monitor = new Hashtable<String,Integer>();
+        monitor.put("i3",10000);
+        monitor.put("i5",15000);
+        monitor.put("i7",20000);
+
+        JPanel panel11 = new JPanel();
+        JLabel monitorLabel = new JLabel("select monitor:");
+        panel11.add(monitorLabel);
+
+        
+        JPanel panel21 = new JPanel();
+        Set<String> monitorKeys = monitor.keySet(); //Returns a Set view of the keys contained in this map.
+        JComboBox monitorComboBox = new JComboBox(monitorKeys.toArray());  //Returns an array containing all of the elements in this set.
+        panel21.add(monitorComboBox);
+
+				monitorkeys.put("HD",10000);
+				monitor.put("LED",12000);
+				monitor.put("xxx",15000);
+			
         processors = new Hashtable<String,Integer>();
         processors.put("i3",10000);
         processors.put("i5",15000);
@@ -42,6 +63,7 @@ class AppFrame extends JFrame{
         JLabel processorLabel = new JLabel("select processor:");
         panel1.add(processorLabel);
 
+        
         JPanel panel2 = new JPanel();
         Set<String> processorKeys = processors.keySet(); //Returns a Set view of the keys contained in this map.
         JComboBox processorComboBox = new JComboBox(processorKeys.toArray());  //Returns an array containing all of the elements in this set.
@@ -86,10 +108,12 @@ class AppFrame extends JFrame{
                     int processorPrice = processors.get((String)processorComboBox.getSelectedItem());
                     int ramPrice = ram.get((String)ramComboBox.getSelectedItem());
                     int graphicsCardsPrice = graphicsCards.get((String)graphicsCardsComboBox.getSelectedItem());
-                    int params[] = new int[3];
+                    int monitorPrice = monitor.get((string)monitorComboBox.getSelectedItem());
+										int params[] = new int[4];
                     params[0] = processorPrice;
                     params[1] = ramPrice;
                     params[2] = graphicsCardsPrice;
+										params[3] = monitorPrice;
 
                     int result = App.calcBill(params);
                     resultLabel2.setText("" + result);
